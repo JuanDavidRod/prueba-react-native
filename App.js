@@ -1,11 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { useState } from 'react';
+import { StyleSheet, View} from 'react-native';
+import ButtonChange from './src/components/ButtonChange';
+import TextInfo from './src/components/TextInfo'
+ 
 export default function App() {
+  const [color, setColor] = useState();
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <TextInfo color={color}/>
+      <View style={styles.conteinerButtons}>
+        <ButtonChange keyWord="rojo" setColor={setColor} />
+        <ButtonChange keyWord="azul" setColor={setColor}/>
+      </View>
     </View>
   );
 }
@@ -17,4 +24,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  conteinerButtons: {
+    flexDirection: 'row',
+  }
 });
